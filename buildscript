@@ -29,10 +29,32 @@ ramdisk_offset=0x01000000
 tags_offset=0x00000100
 cmdline="console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 vmalloc=400M utags.blkdev=/dev/block/platform/msm_sdcc.1/by-name/utags androidboot.write_protect=0 zcache androidboot.selinux=permissive"
 
-# Let's startoneplus-one
+# Let's start
 export ARCH=arm
 export SUBARCH=arm
 export CROSS_COMPILE=$toolchain
+
+echo
+echo "Which toolchain would you like to use?"
+
+while read -p "sabernaro, linaromod, or linaro? " cchoice
+do
+echo
+case "$cchoice" in
+	sabernaro )
+		export CROSS_COMPILE=/home/yoshishapow/kernels/toolchains/SaberNaro-arm-eabi-4.9/bin/arm-eabi-
+		break
+		;;
+	linaromod )
+		export CROSS_COMPILE=/home/yoshishapow/kernels/toolchains/LinaroMod-arm-eabi-4.9/bin/arm-eabi-
+		break
+		;;
+	linaro )
+		export CROSS_COMPILE=/home/yoshishapow/kernels/toolchains/linaro-arm-eabi-4.9/bin/arm-eabi-
+		break
+		;;
+esac
+done
 
 echo
 
