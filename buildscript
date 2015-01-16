@@ -16,11 +16,39 @@ echo ' |__|__|__||____|_||____||_| |_||_||_||_||___|'
 echo
 echo '        Compile Script by YoshiShaPow        '
 
+# Let's start
+export ARCH=arm
+export SUBARCH=arm
+
+echo
+echo "Which toolchain would you like to use?"
+
+while read -p "sabernaro, linaromod, or linaro? " cchoice
+do
+case "$cchoice" in
+	sabernaro )
+		toolchain="sabernaro"
+		export CROSS_COMPILE=/home/yoshishapow/kernels/toolchains/SaberNaro-arm-eabi-4.9/bin/arm-eabi-
+		break
+		;;
+	linaromod )
+		toolchain="linaromod"
+		export CROSS_COMPILE=/home/yoshishapow/kernels/toolchains/LinaroMod-arm-eabi-4.9/bin/arm-eabi-
+		break
+		;;
+	linaro )
+		toolchain="linaro"
+		export CROSS_COMPILE=/home/yoshishapow/kernels/toolchains/linaro-arm-eabi-4.9/bin/arm-eabi-
+		break
+		;;
+esac
+done
+
 # Tuneables
-buildname="TGM-falcon-lollipop-v1.0.0"
+version="v1.0.0"
+buildname="TGM-falcon-lollipop-$toolchain-$version"
 defconfig="tgm_falcon_defconfig"
-jobs="6"
-toolchain="/home/yoshishapow/kernels/toolchains/cortex_a15/bin/arm-cortex_a15-linux-gnueabihf-"
+jobs="8"
 kerneltype="zImage"
 output="../out/falcon"
 ps=2048
@@ -28,33 +56,6 @@ base=0x00000000
 ramdisk_offset=0x01000000
 tags_offset=0x00000100
 cmdline="console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 vmalloc=400M utags.blkdev=/dev/block/platform/msm_sdcc.1/by-name/utags androidboot.write_protect=0 zcache androidboot.selinux=permissive"
-
-# Let's start
-export ARCH=arm
-export SUBARCH=arm
-export CROSS_COMPILE=$toolchain
-
-echo
-echo "Which toolchain would you like to use?"
-
-while read -p "sabernaro, linaromod, or linaro? " cchoice
-do
-echo
-case "$cchoice" in
-	sabernaro )
-		export CROSS_COMPILE=/home/yoshishapow/kernels/toolchains/SaberNaro-arm-eabi-4.9/bin/arm-eabi-
-		break
-		;;
-	linaromod )
-		export CROSS_COMPILE=/home/yoshishapow/kernels/toolchains/LinaroMod-arm-eabi-4.9/bin/arm-eabi-
-		break
-		;;
-	linaro )
-		export CROSS_COMPILE=/home/yoshishapow/kernels/toolchains/linaro-arm-eabi-4.9/bin/arm-eabi-
-		break
-		;;
-esac
-done
 
 echo
 
@@ -105,6 +106,8 @@ case "$cchoice" in
 		;;
 esac
 done
+
+CONFIG_LOCALVERSION="TGM-falcon-lollipop-$toolchain-$version"
 
 echo
 
@@ -160,11 +163,6 @@ fi
 
 if [ -f arch/arm/boot/"$kerneltype" ]; then
 	rm -rf ozip/system
-	mkdir -p ozip/system/lib/modules
-	mkdir out/modules
-	find . -name "*.ko" -exec cp {} ozip/system/lib/modules \;
-	mkdir ozip/system/lib/modules/pronto
-	mv ozip/system/lib/modules/wlan.ko ozip/system/lib/modules/pronto/pronto_wlan.ko
 	cd ozip
 	zip -r ../$buildname.zip .
 	mv ../$buildname.zip ../$output
