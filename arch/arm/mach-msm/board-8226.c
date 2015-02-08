@@ -126,15 +126,13 @@ void __init msm8226_add_drivers(void)
 	else
 		msm_clock_init(&msm8226_clock_init_data);
 	tsens_tm_init_driver();
-	msm_thermal_device_init();
 <<<<<<< HEAD
+	msm_thermal_device_init();
 =======
 #ifdef CONFIG_INTELLI_THERMAL
 	msm_thermal_device_init(NULL);
 #endif
 >>>>>>> 8182cce... board-8226: initialize intelli_thermal engine
-=======
->>>>>>> parent of 25b8351... initialize intellithermal for msm8226
 }
 
 void __init msm8226_init(void)
