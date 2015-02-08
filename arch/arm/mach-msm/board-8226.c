@@ -130,8 +130,6 @@ void __init msm8226_add_drivers(void)
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_INTELLI_THERMAL
-	msm_thermal_init(NULL);
-#else
 	msm_thermal_device_init(NULL);
 #endif
 >>>>>>> 8182cce... board-8226: initialize intelli_thermal engine
