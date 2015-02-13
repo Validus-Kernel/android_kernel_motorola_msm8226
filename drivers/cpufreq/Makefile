@@ -16,11 +16,14 @@ obj-$(CONFIG_CPU_FREQ_GOV_OPTIMAX)      += cpufreq_optimax.o
 obj-$(CONFIG_CPU_FREQ_GOV_INTELLIDEMAND)+= cpufreq_intellidemand.o
 obj-$(CONFIG_CPU_FREQ_GOV_BADASS)       += cpufreq_badass.o
 obj-$(CONFIG_CPU_FREQ_GOV_SMARTMAX)	+= cpufreq_smartmax.o
+<<<<<<< HEAD
 obj-$(CONFIG_CPU_FREQ_GOV_INTELLIACTIVE)+= cpufreq_intelliactive.o
 =======
 >>>>>>> parent of b9ac226... add several governors
 =======
 >>>>>>> parent of 1dc0e5a... add optimax governor
+=======
+>>>>>>> parent of 05baaec... enable intelliactive
 
 # CPUfreq cross-arch helpers
 obj-$(CONFIG_CPU_FREQ_TABLE)		+= freq_table.o
