@@ -116,6 +116,7 @@ config CPU_FREQ_DEFAULT_GOV_OPTIMAX
         help
           Use the CPUFreq governor 'optimax' as default
 
+<<<<<<< HEAD
 config CPU_FREQ_DEFAULT_GOV_INTELLIDEMAND
         bool "intellidemand"
         select CPU_FREQ_GOV_INTELLIDEMAND
@@ -150,6 +151,8 @@ config CPU_FREQ_DEFAULT_GOV_INTELLIACTIVE
           loading your cpufreq low-level hardware driver, using the
           'interactive' governor for latency-sensitive workloads.
 
+=======
+>>>>>>> parent of b9ac226... add several governors
 
 endchoice
 
@@ -252,6 +255,7 @@ config CPU_FREQ_GOV_OPTIMAX
         tristate "'optimax' cpufreq policy governor"
         select CPU_FREQ_TABLE
 
+<<<<<<< HEAD
 config CPU_FREQ_GOV_BADASS
         tristate "'badass' cpufreq policy governor"
         select CPU_FREQ_TABLE
@@ -301,6 +305,8 @@ config CPU_FREQ_GOV_INTELLIACTIVE
           If in doubt, say N.
 
 
+=======
+>>>>>>> parent of b9ac226... add several governors
 menu "x86 CPU frequency scaling drivers"
 depends on X86
 source "drivers/cpufreq/Kconfig.x86"
