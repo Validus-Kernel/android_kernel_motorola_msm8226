@@ -147,6 +147,8 @@ static void detect_doubletap2wake(int x, int y, bool st)
         pr_info(LOGTAG"x,y(%4d,%4d) single:%s\n",
                 x, y, (single_touch) ? "true" : "false");
 #endif
+        else
+               dt2w_feather = 200
 	if ((single_touch) && (dt2w_switch > 0) && (exec_count) && (touch_cnt)) {
 		
 		if ((ktime_to_ms(ktime_get())-tap_time_pre) >= DT2W_TIME)
@@ -155,7 +157,6 @@ static void detect_doubletap2wake(int x, int y, bool st)
 		if (touch_nr == 0) {
 			new_touch(x, y);
 		} else if (touch_nr == 1) {
-
 			if ((calc_feather(x, x_pre) < dt2w_feather) &&
 			    (calc_feather(y, y_pre) < dt2w_feather)) {
 				pr_info(LOGTAG"ON\n");
