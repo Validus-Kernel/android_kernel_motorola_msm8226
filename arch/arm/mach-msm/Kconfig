@@ -1889,12 +1889,12 @@ config MSM_CPU_FREQ_SET_MIN_MAX
 config MSM_CPU_FREQ_MAX
 	int "Max CPU Frequency"
 	depends on MSM_CPU_FREQ_SET_MIN_MAX
-	default 384000
+	default 1190400
 
 config MSM_CPU_FREQ_MIN
 	int "Min CPU Frequency"
 	depends on MSM_CPU_FREQ_SET_MIN_MAX
-	default 245760
+	default 300000
 
 endif # CPU_FREQ_MSM
 
@@ -1911,6 +1911,31 @@ config MSM_DEVFREQ_CPUBW
 	  DDR IB/AB bandwidth votes. This driver provides a SoC topology
 	  agnostic interface to so that some of the devfreq governors can be
 	  shared across SoCs.
+
+config CPU_UNDERCLOCK
+	bool "enable CPU underclocking option"
+ 	default n
+ 	help
+ 	  Enable CPU underclocking to 96Mhz
+
+config USERSPACE_VOLTAGE_CONTROL
+	bool "Enable Userspace CPU Voltage Control"
+	default y
+	help
+	  Userspace Voltage Control
+
+config ALESSA_HOTPLUG
+	bool "Enable Alessa_plug cpu hotplug driver"
+	default y
+	help
+	    Generic alessa_plug cpu hotplug driver for ARM SOCs on the XPerience kernel
+	    
+config ALESSA_HOTPLUG_USE_CPU_UTIL
+	bool "Enable Alessa_plug cpu statistics utilization"
+	depends on (ALESSA_HOTPLUG)
+	default y
+	help
+	  Alessa_plug cpu statistics utilization
 
 config MSM_AVS_HW
 	bool "Enable Adaptive Voltage Scaling (AVS)"

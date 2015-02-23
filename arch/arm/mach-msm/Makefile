@@ -63,6 +63,7 @@ ifdef CONFIG_ARCH_MSM8625
 	obj-$(CONFIG_SMP) += platsmp-8625.o
 endif
 obj-$(CONFIG_HOTPLUG_CPU) += hotplug.o
+obj-$(CONFIG_ALESSA_HOTPLUG) += alessa_plug.o
 
 obj-$(CONFIG_MSM_AVS_HW) += avs.o
 obj-$(CONFIG_CPU_V6) += idle-v6.o
@@ -433,3 +434,6 @@ obj-$(CONFIG_MMI_UNIT_INFO) += mmi-unit-info.o
 obj-$(CONFIG_MMI_SOC_INFO) += mmi_soc_info.o
 obj-$(CONFIG_MMI_MSM_PINMUX) += mmi-pinmux.o
 obj-$(CONFIG_PM_DEBUG) += pm_debug.o
+
+obj-$(CONFIG_LCD_KCAL) += board_kcal.o kcal_ctrl.o
+
