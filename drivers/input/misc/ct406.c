@@ -24,8 +24,7 @@
 #ifdef CONFIG_POWERSUSPEND
 #include <linux/powersuspend.h>
 #endif
-
-
+#endif
 #include <linux/i2c.h>
 #include <linux/input.h>
 #include <linux/interrupt.h>
